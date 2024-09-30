@@ -1,11 +1,34 @@
 services:
-  web:
-    container_name: own_server
+
+  web1:
+    container_name: own_server1
     build:
       context: .
       dockerfile: src/Dockerfile
     command: uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload
     volumes:
     - ./src/server:/web/server
+    environment:
+      SERVER_ID: SERVER-1
+
+  web2:
+    container_name: own_server2
+    build:
+      context: .
+      dockerfile: src/Dockerfile
+    command: uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - ./src:/src
+    environment:
+      SERVER_ID: SERVER-2
+
+  nginx:
+    container_name: nginx_balancer
+    image: nginx:latest
     ports:
-      - '8400:8000'
+      - "8400:80"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    depends_on:
+      - web1
+      - web2
