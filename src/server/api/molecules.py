@@ -30,7 +30,7 @@ def get_molecule(mol_id: int):
 
 
 @router.get("/search/{smiles}")
-def get_molecule(smiles: str):
+def search_molecule(smiles: str):
     return substructure_search(mol_storage, smiles)
 
 
