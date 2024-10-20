@@ -31,10 +31,9 @@ jobs:
         pip install -r requirements.txt
 
     - name: Static code checks
-      run: |
-        flake8 ./src/
-        flake8 ./tests/
+      run:
+        flake8 ./src/ ./tests/
 
     - name: Test with pytest
-      run: |
+      run:
         pytest -vv
