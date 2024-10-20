@@ -34,8 +34,8 @@ def get_molecule(mol_id: int):
 def search_molecule(smiles: str):
     return substructure_search(mol_storage, smiles)
 
-
 @router.post("/")
 def add_molecule(molecule: Molecule):
     mol_storage.add_molecule(molecule)
     return molecule
+
