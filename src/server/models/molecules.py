@@ -32,4 +32,3 @@ class Storage:
 
     def get_mol_by_id(self, mol_id: int) -> Molecule:
         return self.molecules[mol_id]
-

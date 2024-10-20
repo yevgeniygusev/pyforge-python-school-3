@@ -7,6 +7,7 @@ router = APIRouter(prefix='/molecules')
 
 mol_storage = Storage()
 
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     global mol_storage

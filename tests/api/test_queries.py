@@ -1,4 +1,3 @@
-import pytest
 from pytest_unordered import unordered
 from fastapi.testclient import TestClient
 from src.server.models.molecules import Molecule, Storage
