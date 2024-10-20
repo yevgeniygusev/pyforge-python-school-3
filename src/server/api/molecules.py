@@ -7,6 +7,7 @@ router = APIRouter(prefix='/molecules')
 
 mol_storage = Storage()
 
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     global mol_storage
@@ -30,7 +31,7 @@ def get_molecule(mol_id: int):
 
 
 @router.get("/search/{smiles}")
-def get_molecule(smiles: str):
+def search_molecule(smiles: str):
     return substructure_search(mol_storage, smiles)
 
 
